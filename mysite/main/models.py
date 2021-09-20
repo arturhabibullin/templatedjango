@@ -42,3 +42,5 @@ class Sample(models.Model):
     def __str__(self):
         return self.sample
 
+    def get_absolute_url(self):
+        return reverse('sample_detail_url', kwargs={'sample': self.sample})

@@ -11,13 +11,9 @@
         <div class="card-body">
         <h5 class="card-title">{{ item.date_pub }}</h5>
         <p class="card-text">
+                            
             <a href="{{ company.get_absolute_url }}">{{ company.name }}</a>
         </p>
-        
-        {% for item in sample.categorys.all %}
-            {{ item.name }}
-        {% endfor %}
-            
         <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
     </div>
@@ -25,4 +21,3 @@
         
 
 {% endblock content %}
-    

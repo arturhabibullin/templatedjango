@@ -12,9 +12,10 @@ def companys_list(request):
 def company_detail(request, slug):
     company = Company.objects.get(slug=slug)
     sample=company.sample_set.all()
+
     context = {
         'company':company,
-        'sample':sample
+        'sample':sample,
     }
     return render(request, 'main/company_detail.html', context)
 
@@ -56,3 +57,13 @@ def samples_list(request):
     }
     return render(request, 'main/samples_list.html', context)
 
+def sample_detail(request, sample):
+    sample = Sample.objects.get(sample=sample)
+    company = sample.company
+    product = sample.product
+    context = {
+        'sample':sample,
+        'company':company,
+        'product':product
+    }
+    return render(request, 'main/sample_detail.html', context)
