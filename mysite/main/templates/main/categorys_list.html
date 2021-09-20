@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+    {% for category in categorys %}
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ category.get_absolute_url }}">{{ category.name }}</a>
+        </li>
+    {% endfor %}
+{% endblock navbar %}
+    
+{% block content %}
+   
+   {% for category in categorys %}
+       <a href="{{ category.get_absolute_url }}">{{ category.name }}</a>
+   {% endfor %}
+       
+{% endblock content %}
+    

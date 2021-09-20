@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {% for sample in samples %}
+    {% for item in category.samples.all  %}
     <div class="card mb-5">
         <div class="card-header">
-        {{ sample.sample }}
+        {{ item.sample }}
         </div>
         <div class="card-body">
-        <h5 class="card-title">{{ sample.date_pub }}</h5>
+        <h5 class="card-title">{{ item.date_pub }}</h5>
         <p class="card-text">
-        
+            <a href="{{ company.get_absolute_url }}">{{ company.name }}</a>
         {% for category in sample.categorys.all %}
-           <a href="{{ category.get_absolute_url }}">{{ category.name }}</a>
+        <a href="{{ category.get_absolute_url }}">{{ category.name }}</a>
         {% endfor %}
             
         </p>
@@ -20,4 +20,3 @@
     </div>
     {% endfor %}
 {% endblock content %}
-    
