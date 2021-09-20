@@ -5,7 +5,7 @@ from django.shortcuts import render
 def companys_list(request):
     companys = Company.objects.all()
     context = {
-        'companys':companys
+        'companys':companys,
     }
     return render(request, 'main/companys_list.html', context)
 
@@ -52,8 +52,10 @@ def product_detail(request, slug):
 
 def samples_list(request):
     samples = Sample.objects.all()
+    companys = Company.objects.all()
     context = {
-        'samples':samples
+        'samples':samples,
+        'companys':companys,
     }
     return render(request, 'main/samples_list.html', context)
 

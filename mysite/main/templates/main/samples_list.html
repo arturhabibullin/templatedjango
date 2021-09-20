@@ -1,4 +1,12 @@
-{% extends 'base.html' %}
+{% extends 'main/base_main.html' %}
+
+{% block navbar %}
+    {% for company in companys %}
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ company.get_absolute_url }}">{{ company.name }}</a>
+        </li>
+    {% endfor %}
+{% endblock navbar %}
 
 {% block content %}
     {% for sample in samples %}
@@ -8,6 +16,8 @@
         </div>
         <div class="card-body">
         <h5 class="card-title">{{ sample.date_pub }}</h5>
+        <a href="{{ sample.company.get_absolute_url }}">{{ sample.company }}</a>
+        <a href="{{ sample.product.get_absolute_url }}">{{ sample.product }}</a>
         <p class="card-text">
         
         {% for category in sample.categorys.all %}
