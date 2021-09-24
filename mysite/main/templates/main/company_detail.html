@@ -1,22 +1,19 @@
 {% extends 'main/base_main.html' %}
 
+{% block navbar %}
+    {% for item in product %}
+
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'company_product_url' company=company.slug product=item.slug %}">{{ item.name }}</a>
+        </li>
+    {% endfor %}
+{% endblock navbar %}
+
 {% block content %}
 
-    {% for item in sample %}
-    <div class="card mb-5">
-        <div class="card-header">
-        {{ item.sample }}
-        </div>
-        <div class="card-body">
-        <h5 class="card-title">{{ item.date_pub }}</h5>
-        <p class="card-text">
-                            
-            <a href="{{ company.get_absolute_url }}">{{ company.name }}</a>
-        </p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-    {% endfor %}
+{% for sample in samples %}
+{% include 'main/includes/sample_card_template.html' %}
+{% endfor %}
         
 
 {% endblock content %}

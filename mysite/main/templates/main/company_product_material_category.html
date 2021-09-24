@@ -1,0 +1,18 @@
+{% extends 'main/base_main.html' %}
+
+
+{% block navbar %}
+    
+    
+        
+
+{% endblock navbar %}
+    
+
+{% block content %}
+
+{% for sample in samples %}
+{% include 'main/includes/sample_card_template.html' %}
+{% endfor %}
+
+{% endblock content %}

@@ -1,15 +1,25 @@
 <div class="card mb-5">
     <div class="card-header">
-    {{ item.sample }}
+    {{ sample.sample }}
     </div>
     <div class="card-body">
-    <h5 class="card-title">{{ item.date_pub }}</h5>
+    <h5 class="card-title">{{ sample.date_pub }}</h5>
     <p class="card-text">
-        <a href="{{ company.get_absolute_url }}">{{ company.name }}</a>
-    {% for category in sample.categorys.all %}
-    <a href="{{ category.get_absolute_url }}">{{ category.name }}</a>
-    {% endfor %}
-        
+        <p>
+            <a href="{{ sample.company.get_absolute_url }}">{{ sample.company }}</a>
+        </p>
+       <p>
+        <a href="{% url 'company_product_material_url' company=sample.company.slug product=sample.product.slug material=sample.material.slug %}">{{ sample.material }}</a>
+        </p>
+        <p>
+            <a href="{% url 'company_product_url' company=sample.company.slug product=sample.product.slug %}">{{ sample.product }}</a>
+        </p>
+       
+       {% for category in sample.categorys.all %}
+       <a href="{% url 'company_product_material_category_url' company=sample.company.slug product=sample.product.slug material=sample.material.slug category=category.slug %}">{{ category.name }}</a>
+       {% endfor %}
+           
+            
     </p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>

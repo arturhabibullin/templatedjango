@@ -1,0 +1,21 @@
+{% extends 'main/base_main.html' %}
+
+
+{% block navbar %}
+
+{% for item in categorys %}
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'company_product_material_category_url' company=company.slug product=product.slug material=material.slug category=item.slug %}">{{ item.name }}</a>
+    </li>
+{% endfor %}
+    
+{% endblock navbar %}
+    
+
+{% block content %}
+
+{% for sample in samples %}
+{% include 'main/includes/sample_card_template.html' %}
+{% endfor %}
+
+{% endblock content %}

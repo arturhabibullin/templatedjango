@@ -1,22 +1,7 @@
 {% extends 'main/base_main.html' %}
 
 {% block content %}
-    {% for item in category.samples.all  %}
-    <div class="card mb-5">
-        <div class="card-header">
-        {{ item.sample }}
-        </div>
-        <div class="card-body">
-        <h5 class="card-title">{{ item.date_pub }}</h5>
-        <p class="card-text">
-            <a href="{{ company.get_absolute_url }}">{{ company.name }}</a>
-        {% for category in sample.categorys.all %}
-        <a href="{{ category.get_absolute_url }}">{{ category.name }}</a>
-        {% endfor %}
-            
-        </p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
+    {% for sample in category.samples.all  %}
+        {% include 'main/includes/sample_card_template.html' %}
     {% endfor %}
 {% endblock content %}
